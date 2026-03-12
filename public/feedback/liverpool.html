@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpudBros Liverpool — Leave Feedback</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f9f6f1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b07d3a;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .stars input[type="radio"] {
+      display: none;
+    }
+
+    .stars label {
+      font-size: 36px;
+      cursor: pointer;
+      color: #ddd;
+      transition: color 0.15s ease;
+      margin-bottom: 0;
+      font-weight: normal;
+    }
+
+    .stars input[type="radio"]:checked ~ label,
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: #ddd;
+    }
+
+    .stars input[type="radio"]:checked + label,
+    .stars label:hover {
+      color: #f5a623;
+    }
+
+    .star-row {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 8px;
+    }
+
+    .star-row input[type="radio"] {
+      display: none;
+    }
+
+    .star-row label {
+      font-size: 36px;
+      cursor: pointer;
+      color: #ddd;
+      transition: color 0.15s ease;
+      margin-bottom: 0;
+      font-weight: normal;
+    }
+
+    .star-row label:hover,
+    .star-row label:hover ~ label {
+      color: #f5a623;
+    }
+
+    .star-row input[type="radio"]:checked ~ label {
+      color: #f5a623;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a1a;
+      resize: vertical;
+      min-height: 110px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    textarea:focus {
+      border-color: #b07d3a;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input[type="email"]:focus {
+      border-color: #b07d3a;
+    }
+
+    .optional {
+      font-size: 12px;
+      color: #999;
+      font-weight: normal;
+      margin-left: 4px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 18px 24px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #b07d3a;
+      color: #ffffff;
+      margin-top: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-submit:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error-msg {
+      font-size: 13px;
+      color: #c0392b;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #bbb;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🥔</div>
+    <div class="brand">SpudBros Express · Liverpool</div>
+    <h1>We appreciate your honesty</h1>
+    <p class="subtitle">Tell us what we can do better. This goes directly to our team.</p>
+
+    <form id="feedbackForm">
+      <div class="field">
+        <label>How would you rate your visit?</label>
+        <div class="star-row">
+          <input type="radio" name="rating" id="star5" value="5" />
+          <label for="star5">★</label>
+          <input type="radio" name="rating" id="star4" value="4" />
+          <label for="star4">★</label>
+          <input type="radio" name="rating" id="star3" value="3" />
+          <label for="star3">★</label>
+          <input type="radio" name="rating" id="star2" value="2" />
+          <label for="star2">★</label>
+          <input type="radio" name="rating" id="star1" value="1" />
+          <label for="star1">★</label>
+        </div>
+        <div class="error-msg" id="ratingError">Please select a star rating.</div>
+      </div>
+
+      <div class="field">
+        <label for="description">What could we have done better?</label>
+        <textarea id="description" name="description" placeholder="Tell us about your experience..."></textarea>
+        <div class="error-msg" id="descriptionError">Please enter some feedback.</div>
+      </div>
+
+      <div class="field">
+        <label for="email">Your email <span class="optional">(optional)</span></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" />
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">Send Feedback</button>
+    </form>
+
+    <div class="footer">SpudBros Express · Thank you for helping us improve</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const rating = form.querySelector('input[name="rating"]:checked');
+      const description = document.getElementById('description').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      const ratingError = document.getElementById('ratingError');
+      const descriptionError = document.getElementById('descriptionError');
+
+      ratingError.style.display = 'none';
+      descriptionError.style.display = 'none';
+
+      let valid = true;
+
+      if (!rating) {
+        ratingError.style.display = 'block';
+        valid = false;
+      }
+
+      if (!description) {
+        descriptionError.style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            location_id: 'liverpool',
+            star_rating: parseInt(rating.value),
+            description: description,
+            customer_email: email || null,
+          }),
+        });
+
+        if (response.ok) {
+          window.location.href = '/thankyou';
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Feedback';
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Feedback';
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>
