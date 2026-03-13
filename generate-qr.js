@@ -5,11 +5,11 @@ const path = require('path');
 const locations = [
   {
     name: 'liverpool',
-    url: 'https://kompaq.com/spudbrosexpressliverpool',
+    url: 'https://www.kombaq.com/spudbrosexpressliverpool',
   },
   {
     name: 'london',
-    url: 'https://kompaq.com/spudbrosexpresslondon',
+    url: 'https://www.kombaq.com/spudbrosexpresslondon',
   },
 ];
 

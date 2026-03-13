@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpudBros Liverpool — Leave Feedback</title>
+  <title>SpudBros Express Liverpool — Feedback</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,7 +13,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f9f6f1;
+      background-color: #FFF0C3;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -23,91 +23,84 @@
 
     .card {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 40px 32px;
-      max-width: 420px;
+      border-radius: 16px;
+      padding: 28px 28px 36px;
+      max-width: 400px;
       width: 100%;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
     }
 
     .logo {
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 6px;
+      width: 48px;
+      height: auto;
+      flex-shrink: 0;
     }
 
-    .brand {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+    .location-tag {
+      display: inline-block;
+      background-color: #D30909;
+      color: #FFF0C3;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #b07d3a;
-      text-align: center;
-      margin-bottom: 24px;
+      padding: 6px 14px;
+      border-radius: 100px;
     }
 
     h1 {
-      font-size: 22px;
-      font-weight: 700;
+      font-family: Impact, 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
       color: #1a1a1a;
-      text-align: center;
-      margin-bottom: 8px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
     }
 
     .subtitle {
       font-size: 14px;
-      color: #666;
-      text-align: center;
+      color: #888;
       margin-bottom: 32px;
       line-height: 1.5;
     }
 
     .field {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     label {
       display: block;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       color: #1a1a1a;
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
     }
 
-    .stars {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .stars input[type="radio"] {
-      display: none;
-    }
-
-    .stars label {
-      font-size: 36px;
-      cursor: pointer;
-      color: #ddd;
-      transition: color 0.15s ease;
-      margin-bottom: 0;
-      font-weight: normal;
-    }
-
-    .stars input[type="radio"]:checked ~ label,
-    .stars label:hover,
-    .stars label:hover ~ label {
-      color: #ddd;
-    }
-
-    .stars input[type="radio"]:checked + label,
-    .stars label:hover {
-      color: #f5a623;
+    .optional {
+      font-size: 11px;
+      color: #aaa;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 4px;
     }
 
     .star-row {
       display: flex;
       flex-direction: row-reverse;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
     }
 
     .star-row input[type="radio"] {
@@ -115,28 +108,30 @@
     }
 
     .star-row label {
-      font-size: 36px;
+      font-size: 40px;
       cursor: pointer;
-      color: #ddd;
+      color: #e0e0e0;
       transition: color 0.15s ease;
       margin-bottom: 0;
       font-weight: normal;
+      text-transform: none;
+      letter-spacing: 0;
     }
 
     .star-row label:hover,
     .star-row label:hover ~ label {
-      color: #f5a623;
+      color: #FFB636;
     }
 
     .star-row input[type="radio"]:checked ~ label {
-      color: #f5a623;
+      color: #FFB636;
     }
 
     textarea {
       width: 100%;
       padding: 14px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 12px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 10px;
       font-size: 15px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       color: #1a1a1a;
@@ -144,48 +139,46 @@
       min-height: 110px;
       outline: none;
       transition: border-color 0.15s ease;
+      background-color: #fafafa;
     }
 
     textarea:focus {
-      border-color: #b07d3a;
+      border-color: #FFB636;
+      background-color: #fff;
     }
 
     input[type="email"] {
       width: 100%;
       padding: 14px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 12px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 10px;
       font-size: 15px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       color: #1a1a1a;
       outline: none;
       transition: border-color 0.15s ease;
+      background-color: #fafafa;
     }
 
     input[type="email"]:focus {
-      border-color: #b07d3a;
-    }
-
-    .optional {
-      font-size: 12px;
-      color: #999;
-      font-weight: normal;
-      margin-left: 4px;
+      border-color: #FFB636;
+      background-color: #fff;
     }
 
     .btn-submit {
       display: block;
       width: 100%;
       padding: 18px 24px;
-      border-radius: 14px;
+      border-radius: 12px;
       border: none;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      background-color: #b07d3a;
-      color: #ffffff;
+      background-color: #FFB636;
+      color: #1a1a1a;
       margin-top: 8px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: 0.02em;
       transition: opacity 0.15s ease, transform 0.15s ease;
     }
 
@@ -200,26 +193,22 @@
     }
 
     .error-msg {
-      font-size: 13px;
-      color: #c0392b;
-      margin-top: 6px;
-      display: none;
-    }
-
-    .footer {
-      margin-top: 28px;
       font-size: 12px;
-      color: #bbb;
-      text-align: center;
+      color: #D30909;
+      margin-top: 6px;
+      font-weight: 600;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="logo">🥔</div>
-    <div class="brand">SpudBros Express · Liverpool</div>
-    <h1>We appreciate your honesty</h1>
-    <p class="subtitle">Tell us what we can do better. This goes directly to our team.</p>
+    <div class="card-header">
+      <img src="/logo.png" alt="SpudBros Express" class="logo" />
+      <div class="location-tag">Liverpool</div>
+    </div>
+    <h1>Your feedback matters</h1>
+    <p class="subtitle">Tell us what happened. It goes straight to our team.</p>
 
     <form id="feedbackForm">
       <div class="field">
@@ -252,8 +241,6 @@
 
       <button type="submit" class="btn-submit" id="submitBtn">Send Feedback</button>
     </form>
-
-    <div class="footer">SpudBros Express · Thank you for helping us improve</div>
   </div>
 
   <script>
