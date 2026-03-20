@@ -244,6 +244,21 @@
   </div>
 
   <script>
+    function trackEvent(event, properties = {}) {
+      fetch('/api/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event,
+          properties,
+          user_agent: navigator.userAgent,
+          referrer: document.referrer
+        })
+      }).catch(() => {});
+    }
+
+    trackEvent('form_load', { location_id: 'liverpool' });
+
     const form = document.getElementById('feedbackForm');
     const submitBtn = document.getElementById('submitBtn');
 
@@ -290,7 +305,12 @@
         });
 
         if (response.ok) {
-          window.location.href = '/thankyou';
+          trackEvent('form_submitted', {
+            location_id: 'liverpool',
+            star_rating: parseInt(rating.value),
+            has_email: email.length > 0
+          });
+          window.location.href = '/thankyou?location_id=liverpool';
         } else {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Feedback';

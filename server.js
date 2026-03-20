@@ -80,6 +80,20 @@ app.post('/api/feedback', async (req, res) => {
   }
 });
 
+app.post('/api/event', async (req, res) => {
+  try {
+    const { event, properties, user_agent, referrer } = req.body;
+    await supabase.from('events').insert({
+      event,
+      location_id: properties?.location_id || null,
+      properties,
+      user_agent,
+      referrer
+    });
+  } catch (e) {}
+  res.sendStatus(200);
+});
+
 async function logScan(locationId, scanPath) {
   try {
     await supabase

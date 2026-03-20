@@ -131,5 +131,29 @@
       Could be better
     </a>
   </div>
+  <script>
+    function trackEvent(event, properties = {}) {
+      fetch('/api/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event,
+          properties,
+          user_agent: navigator.userAgent,
+          referrer: document.referrer
+        })
+      }).catch(() => {});
+    }
+
+    trackEvent('page_load', { location_id: 'london' });
+
+    document.querySelector('.btn-positive').addEventListener('click', function() {
+      trackEvent('button_click', { location_id: 'london', button: 'positive' });
+    });
+
+    document.querySelector('.btn-negative').addEventListener('click', function() {
+      trackEvent('button_click', { location_id: 'london', button: 'negative' });
+    });
+  </script>
 </body>
 </html>

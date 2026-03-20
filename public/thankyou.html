@@ -91,5 +91,23 @@
     <h1>Thank you</h1>
     <p class="subtitle">Your feedback goes straight to our team. We'll use it to do better.</p>
   </div>
+  <script>
+    function trackEvent(event, properties = {}) {
+      fetch('/api/event', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event,
+          properties,
+          user_agent: navigator.userAgent,
+          referrer: document.referrer
+        })
+      }).catch(() => {});
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const locationId = params.get('location_id') || 'unknown';
+    trackEvent('thankyou_load', { location_id: locationId });
+  </script>
 </body>
 </html>
