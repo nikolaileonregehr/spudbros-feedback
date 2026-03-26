@@ -70,7 +70,7 @@ app.post('/api/feedback', async (req, res) => {
 
     await resend.emails.send({
       from: process.env.FROM_EMAIL,
-      to: ['nikolaileonregehr@gmail.com', 'thomas.shaw@taster.com'],
+      to: ['nikolaileonregehr@gmail.com'],
       subject: `New feedback received — ${location.name}`,
       html: `
         <h2>New Feedback — ${location.name}</h2>
