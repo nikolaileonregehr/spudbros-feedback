@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpudBros Express London — Feedback</title>
+  <title>SpudBros Express Trial — Feedback</title>
   <style>
     * {
       box-sizing: border-box;
@@ -205,7 +205,7 @@
   <div class="card">
     <div class="card-header">
       <img src="/logo.png" alt="SpudBros Express" class="logo" />
-      <div class="location-tag">London</div>
+      <div class="location-tag">Trial</div>
     </div>
     <h1>Your feedback matters</h1>
     <p class="subtitle">Tell us what happened. It goes straight to our team.</p>
@@ -258,7 +258,7 @@
       }).catch(() => {});
     }
 
-    trackEvent('form_load', { location_id: 'london' });
+    trackEvent('form_load', { location_id: 'trial' });
 
     const form = document.getElementById('feedbackForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -298,7 +298,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            location_id: 'london',
+            location_id: 'trial',
             star_rating: parseInt(rating.value),
             description: description,
             customer_email: email || null,
@@ -307,11 +307,11 @@
 
         if (response.ok) {
           trackEvent('form_submitted', {
-            location_id: 'london',
+            location_id: 'trial',
             star_rating: parseInt(rating.value),
             has_email: email.length > 0
           });
-          window.location.href = '/thankyou?location_id=london';
+          window.location.href = '/thankyou?location_id=trial';
         } else {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send Feedback';

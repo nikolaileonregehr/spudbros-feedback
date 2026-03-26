@@ -11,6 +11,12 @@ const locations = {
     googleMapsUrl: 'https://maps.app.goo.gl/BWVyE7ktDghRXjfPA',
     path: 'spudbrosexpresslondon',
   },
+  trial: {
+    id: 'trial',
+    name: 'SpudBros Trial',
+    googleMapsUrl: 'https://maps.app.goo.gl/zu8jehdvnE8FAw7x8',
+    path: 'spudbrosexpresstrial',
+  },
 };
 
 module.exports = locations;

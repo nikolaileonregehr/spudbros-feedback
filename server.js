@@ -23,6 +23,10 @@ app.get('/spudbrosexpresslondon', async (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'spudbrosexpresslondon.html'));
 });
 
+app.get('/spudbrosexpresstrial', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'spudbrosexpresstrial.html'));
+});
+
 // Feedback form pages
 app.get('/feedback/liverpool', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'feedback', 'liverpool.html'));
@@ -30,6 +34,10 @@ app.get('/feedback/liverpool', (req, res) => {
 
 app.get('/feedback/london', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'feedback', 'london.html'));
+});
+
+app.get('/feedback/trial', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'feedback', 'trial.html'));
 });
 
 // Thank you page
@@ -62,7 +70,7 @@ app.post('/api/feedback', async (req, res) => {
 
     await resend.emails.send({
       from: process.env.FROM_EMAIL,
-      to: process.env.NOTIFICATION_EMAIL,
+      to: ['nikolaileonregehr@gmail.com', 'thomas.shaw@taster.com'],
       subject: `New feedback received — ${location.name}`,
       html: `
         <h2>New Feedback — ${location.name}</h2>
